@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import {cameraMovementBasis,composeMovement} from '../camera/MovementBasis';
+import {cameraMovementBasis,composeMovement,yawMovementBasis} from '../camera/MovementBasis';
 import { PLAYER } from '../config/balance';
 import { PhysicsWorld } from '../physics/PhysicsWorld';
 import { Input } from '../input/Input';
@@ -11,8 +11,8 @@ export class PlayerController {
   headBob=false;
   private previousEye=new THREE.Vector3();private currentEye=new THREE.Vector3();
   onStep:()=>void=()=>{};private stepDistance=0;
-  constructor(readonly physics:PhysicsWorld,readonly camera:THREE.PerspectiveCamera,private input:Input,private settings:Settings,state:GameState){this.yaw=state.player.yaw;this.pitch=state.player.pitch;this.currentEye.set(state.player.position.x,state.player.position.y+PLAYER.EYE_HEIGHT,state.player.position.z);this.previousEye.copy(this.currentEye);}
-  look(dx:number,dy:number){this.yaw-=dx*0.002*this.settings.sensitivity;this.pitch=THREE.MathUtils.clamp(this.pitch-dy*0.002*this.settings.sensitivity,-1.48,1.48);}
+  constructor(readonly physics:PhysicsWorld,readonly camera:THREE.PerspectiveCamera,private input:Input,private settings:Settings,state:GameState){this.yaw=state.player.yaw;this.pitch=state.player.pitch;this.currentEye.set(state.player.position.x,state.player.position.y+PLAYER.EYE_HEIGHT,state.player.position.z);this.previousEye.copy(this.currentEye);this.renderCamera(1);}
+  look(dx:number,dy:number){this.yaw-=dx*0.002*this.settings.sensitivity;this.pitch=THREE.MathUtils.clamp(this.pitch-dy*0.002*this.settings.sensitivity,-1.48,1.48);this.camera.rotation.order='YXZ';this.camera.rotation.set(this.pitch,this.yaw,0);}
   jump(){this.jumpRequested=true;}
   setSettings(s:Settings){this.settings=s;}
   tick(dt:number,state:GameState,active:boolean){
@@ -21,9 +21,9 @@ export class PlayerController {
     const crouching=active&&this.input.down('ControlLeft','ControlRight','KeyC');
     this.sprinting=active&&forward>0&&this.input.down('ShiftLeft','ShiftRight')&&state.player.stats.stamina>2&&!crouching;
     const speed=crouching?PLAYER.CROUCH_SPEED:this.sprinting?PLAYER.SPRINT_SPEED:PLAYER.WALK_SPEED;
-    // Synchronize current mouse orientation before querying the canonical camera basis.
-    this.camera.rotation.set(this.pitch,this.yaw,0,'YXZ');
-    cameraMovementBasis(this.camera,this.forward,this.right);
+    // Camera and movement share the same yaw. Pitch only changes where the player looks, never ground movement.
+    this.camera.rotation.order='YXZ';this.camera.rotation.set(this.pitch,this.yaw,0);
+    yawMovementBasis(this.yaw,this.forward,this.right);
     composeMovement(this.forward,this.right,forward,side,this.wish);
     const alpha=1-Math.exp(-dt*(this.grounded?17:5));
     // Ease speed, not world-axis direction: turning must not retain sideways momentum.
@@ -55,9 +55,9 @@ export class PlayerController {
 
   cameraDebug(){
     const forward=new THREE.Vector3(),right=new THREE.Vector3();cameraMovementBasis(this.camera,forward,right);
+    const movement=new THREE.Vector3(),movementRight=new THREE.Vector3();yawMovementBasis(this.yaw,movement,movementRight);
     const position=this.physics.position(),world=this.camera.getWorldPosition(new THREE.Vector3());
     const hierarchy:string[]=[];for(let node:THREE.Object3D|null=this.camera;node;node=node.parent)hierarchy.push(node.name||node.type);
-    const movement=this.forward.lengthSq()?this.forward.clone():forward.clone();
     return {controller:position,world:world.toArray(),local:this.camera.position.toArray(),quaternion:this.camera.quaternion.toArray(),yaw:this.yaw,cameraYaw:this.camera.rotation.y,pitch:this.camera.rotation.x,roll:this.camera.rotation.z,forward:forward.toArray(),movementForward:movement.toArray(),velocity:[this.velocity.x,0,this.velocity.y],angle:THREE.MathUtils.radToDeg(forward.angleTo(movement)),hierarchy,bodyRotation:this.physics.body.rotation(),horizontalEyeOffset:Math.hypot(world.x-position.x,world.z-position.z),fov:this.camera.fov,aspect:this.camera.aspect};
   }
   debugText(){const d=this.cameraDebug(),v=(a:number[])=>a.map(n=>n.toFixed(3)).join(', ');return `CAMERA BASIS\nEYES ${v(d.world)}\nLOCAL ${v(d.local)}\nYAW ${d.yaw.toFixed(3)} / CAMERA ${d.cameraYaw.toFixed(3)}\nPITCH ${d.pitch.toFixed(3)} ROLL ${d.roll.toFixed(3)}\nQUAT ${v(d.quaternion)}\nCAM FWD ${v(d.forward)}\nMOVE FWD ${v(d.movementForward)}\nANGLE ${d.angle.toFixed(5)}°\nVELOCITY ${v(d.velocity)}\nEYE XZ OFFSET ${d.horizontalEyeOffset.toFixed(4)} m\nFOV V ${d.fov.toFixed(2)} ASPECT ${d.aspect.toFixed(3)}\n${d.hierarchy.join(' ← ')}`;}
