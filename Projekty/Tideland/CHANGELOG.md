@@ -1,5 +1,16 @@
 # Tideland changelog
 
+## 0.2.1 — 2026-09-11
+
+Cross-device camera/settings patch.
+
+- Preserved the current world FOV behaviour that is working correctly on the Windows reference build.
+- Added held-item/viewmodel FOV, invert Y and optional head bob.
+- Added render scale, dynamic shadows, crosshair opacity and compass controls.
+- Added Reset Camera, Reset Settings and Reload Latest Build controls.
+- Added version/build identification to F3 telemetry for PC/Mac comparison.
+- Existing settings migrate to safe defaults for the new fields; world saves are untouched.
+
 ## 0.2.0 — 2026-09-11
 
 Reconciliation update combining the useful local Codex work with the newer GitHub camera/movement and Pages fixes.

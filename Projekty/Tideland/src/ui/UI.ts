@@ -66,7 +66,7 @@ export class UI {
 
       <section class="screen modal-screen pause-screen" data-view="pause" aria-label="Pause menu"><div class="modal-content"><div class="eyebrow">TAKE A BREATH</div><h2>PAUSED<span>.</span></h2><p>The island can wait.</p><nav class="pause-nav"><button class="primary-button" data-action="resume">RETURN TO WORLD ${chevron}</button><button data-action="save">SAVE WORLD <span>LOCAL SAVE</span></button><button data-action="settings">SETTINGS ${chevron}</button><button data-action="menu">MAIN MENU ${chevron}</button></nav><div class="pause-footnote"><i></i> Simulation paused</div></div></section>
 
-      <section class="screen settings-screen" data-view="settings" aria-label="Settings"><header class="overlay-header"><div class="small-brand">${mark}<span>TIDELAND</span><i>/</i><span class="muted">SETTINGS</span></div><button class="close-button" data-action="settingsBack">BACK <span>×</span></button></header><div class="settings-content"><div class="settings-intro"><div class="eyebrow">MAKE YOURSELF AT HOME</div><h2>LIVE<br>PREVIEW<span>.</span></h2><p>Adjust the camera and watch the island.<br>Changes apply immediately and save automatically.</p></div><div class="settings-controls"><h3>CONTROLS & CAMERA</h3>${this.slider('sensitivity','Mouse sensitivity',0.2,3,0.1)}${this.slider('fov','Field of view <small>Vertical camera FOV · 60°–100° · applies immediately</small>',60,100,1)}<h3>AUDIO</h3>${this.slider('masterVolume','Master volume',0,1,0.01)}${this.slider('effectsVolume','Effects volume',0,1,0.01)}<h3>GRAPHICS</h3><div class="setting-row quality-row"><label>Graphics quality<small>Vegetation, shadows & rendering resolution</small></label><div class="quality-options"><button data-quality="low">LOW</button><button data-quality="medium">MEDIUM</button><button data-quality="high">HIGH</button></div></div><div class="save-reset-row"><span>LOCAL SAVE DATA<small>Remove your saved island and progress.</small></span><button class="danger-button" data-action="reset">RESET SAVE</button></div><div class="reset-confirm" hidden><span>This permanently removes the saved world.</span><button data-action="resetConfirm">DELETE SAVE</button><button data-action="resetCancel">CANCEL</button></div></div></div></section>
+      <section class="screen settings-screen" data-view="settings" aria-label="Settings"><header class="overlay-header"><div class="small-brand">${mark}<span>TIDELAND</span><i>/</i><span class="muted">SETTINGS</span></div><button class="close-button" data-action="settingsBack">BACK <span>×</span></button></header><div class="settings-content"><div class="settings-intro"><div class="eyebrow">MAKE YOURSELF AT HOME</div><h2>LIVE<br>PREVIEW<span>.</span></h2><p>Changes apply immediately and save automatically.<br><small>BUILD v${GAME_VERSION} · ${GAME_BUILD}</small></p></div><div class="settings-controls"><h3>CONTROLS & CAMERA</h3>${this.slider('sensitivity','Mouse sensitivity',0.2,3,0.1)}${this.slider('fov','World field of view <small>Uses the current proven camera behaviour</small>',60,100,1)}${this.slider('viewmodelFov','Held-item field of view <small>Changes only hands and equipped tools</small>',40,75,1)}${this.toggle('invertY','Invert vertical look','Reverse mouse Y movement')}${this.toggle('headBob','Head bob','Subtle walking camera motion')}<div class="settings-actions"><button data-action="resetCamera">RESET CAMERA</button></div><h3>AUDIO</h3>${this.slider('masterVolume','Master volume',0,1,0.01)}${this.slider('effectsVolume','Effects volume',0,1,0.01)}<h3>GRAPHICS & HUD</h3><div class="setting-row quality-row"><label>Graphics quality<small>Vegetation and environment detail</small></label><div class="quality-options"><button data-quality="low">LOW</button><button data-quality="medium">MEDIUM</button><button data-quality="high">HIGH</button></div></div>${this.slider('renderScale','Render scale <small>Lower this first if FPS is low</small>',0.5,1,0.05)}${this.toggle('shadows','Dynamic shadows','Disable for a large GPU performance gain')}${this.slider('crosshairOpacity','Crosshair opacity',0,1,0.05)}${this.toggle('showCompass','Compass','Show the navigation strip at the top')}<h3>TROUBLESHOOTING</h3><div class="setting-row setting-buttons"><label>Local settings<small>Useful when two devices behave differently.</small></label><div><button data-action="resetSettings">RESET SETTINGS</button><button data-action="reloadBuild">RELOAD LATEST BUILD</button></div></div><div class="save-reset-row"><span>LOCAL SAVE DATA<small>Remove your saved island and progress.</small></span><button class="danger-button" data-action="reset">RESET SAVE</button></div><div class="reset-confirm" hidden><span>This permanently removes the saved world.</span><button data-action="resetConfirm">DELETE SAVE</button><button data-action="resetCancel">CANCEL</button></div></div></div></section>
 
       <section class="screen dead-screen modal-screen" data-view="dead" aria-label="Death screen"><div class="modal-content"><div class="eyebrow">THE ISLAND REMAINS</div><h2>WASHED<br>AWAY<span>.</span></h2><p>Every shore is another beginning.</p><button class="primary-button" data-action="respawn">RESPAWN ${chevron}</button><button class="text-button" data-action="menu">RETURN TO MAIN MENU</button></div></section>
 
@@ -94,13 +94,16 @@ export class UI {
 
   setSettings(settings: Settings): void {
     this.settings = {...settings};
-    for (const name of ['sensitivity','fov','masterVolume','effectsVolume'] as const) {
+    for (const name of ['sensitivity','fov','viewmodelFov','masterVolume','effectsVolume','renderScale','crosshairOpacity'] as const) {
       const input = this.find<HTMLInputElement>(`input[data-setting="${name}"]`);
       input.value = String(settings[name]);
       this.find(`[data-setting-value="${name}"]`).textContent = this.settingValue(name, settings[name]);
       input.style.setProperty('--range',`${(settings[name] - Number(input.min)) / (Number(input.max) - Number(input.min)) * 100}%`);
     }
     this.root.querySelectorAll<HTMLElement>('[data-quality]').forEach(button => button.classList.toggle('active',button.dataset.quality === settings.quality));
+    for(const name of ['invertY','headBob','shadows','showCompass'] as const)this.root.querySelectorAll<HTMLElement>(`[data-toggle="${name}"]`).forEach(button=>button.classList.toggle('active',String(settings[name])===button.dataset.value));
+    this.root.classList.toggle('hide-compass',!settings.showCompass);
+    this.root.style.setProperty('--crosshair-opacity',String(settings.crosshairOpacity));
   }
 
   setSaveAvailable(available: boolean): void {
@@ -153,7 +156,7 @@ export class UI {
       const hash = JSON.stringify([state.inventory,state.craftQueue.map(job => [job.recipeId,Math.ceil(job.remaining)]),this.selectedSlot,this.selectedRecipe,this.recipeCategory]);
       if (hash !== this.inventoryHash && this.dragSlot < 0) { this.inventoryHash = hash; this.renderInventory(state); }
     }
-    if(this.diagnosticVisible) this.find('.diagnostics pre').textContent = `FPS          ${Math.round(hud.fps)}\nFRAME        ${(1000/Math.max(hud.fps,1)).toFixed(1)} ms\nSEED         ${state.seed}\nBIOME        ${hud.biome}\nPOSITION     ${state.player.position.x.toFixed(1)}, ${state.player.position.y.toFixed(1)}, ${state.player.position.z.toFixed(1)}\nSTRUCTURES   ${state.structures.length}\nWORLD TIME   ${state.timeOfDay.toFixed(2)}\n${hud.diagnostics}`;
+    if(this.diagnosticVisible) this.find('.diagnostics pre').textContent = `BUILD        v${GAME_VERSION} / ${GAME_BUILD}\nFPS          ${Math.round(hud.fps)}\nFRAME        ${(1000/Math.max(hud.fps,1)).toFixed(1)} ms\nSEED         ${state.seed}\nBIOME        ${hud.biome}\nPOSITION     ${state.player.position.x.toFixed(1)}, ${state.player.position.y.toFixed(1)}, ${state.player.position.z.toFixed(1)}\nSTRUCTURES   ${state.structures.length}\nWORLD TIME   ${state.timeOfDay.toFixed(2)}\n${hud.diagnostics}`;
   }
 
   private updateStats(hud: HUDData): void {
@@ -248,12 +251,13 @@ export class UI {
       if(target.dataset.recipe) {this.selectedRecipe=target.dataset.recipe;this.inventoryHash='';if(this.state)this.renderInventory(this.state);}
       if(target.dataset.piece) this.actions.selectPiece(target.dataset.piece as PieceType);
       if(target.dataset.quality) {this.settings.quality=target.dataset.quality as Settings['quality'];this.actions.settings({...this.settings});this.setSettings(this.settings);}
+      if(target.dataset.toggle) {const name=target.dataset.toggle as 'invertY'|'headBob'|'shadows'|'showCompass';this.settings[name]=target.dataset.value==='true';this.actions.settings({...this.settings});this.setSettings(this.settings);}
       if(target.dataset.dev) this.actions.dev(target.dataset.dev);
     });
     this.root.addEventListener('input',event => {
       const input = event.target as HTMLInputElement;
-      const name = input.dataset.setting as keyof Settings | undefined;
-      if(!name || name === 'quality') return;
+      const name = input.dataset.setting as 'sensitivity'|'fov'|'viewmodelFov'|'masterVolume'|'effectsVolume'|'renderScale'|'crosshairOpacity'|undefined;
+      if(!name) return;
       this.settings[name] = Number(input.value);
       this.actions.settings({...this.settings});
       this.setSettings(this.settings);
@@ -309,6 +313,9 @@ export class UI {
       case 'reset':this.find('.reset-confirm').hidden=false;break;
       case 'resetCancel':this.find('.reset-confirm').hidden=true;break;
       case 'resetConfirm':this.actions.resetSave();this.find('.reset-confirm').hidden=true;this.setSaveAvailable(false);break;
+      case 'resetCamera':this.settings={...this.settings,sensitivity:DEFAULT_SETTINGS.sensitivity,fov:DEFAULT_SETTINGS.fov,viewmodelFov:DEFAULT_SETTINGS.viewmodelFov,invertY:DEFAULT_SETTINGS.invertY,headBob:DEFAULT_SETTINGS.headBob};this.actions.settings({...this.settings});this.setSettings(this.settings);this.notify('Camera settings restored');break;
+      case 'resetSettings':this.settings={...DEFAULT_SETTINGS};this.actions.settings({...this.settings});this.setSettings(this.settings);this.notify('Settings restored to defaults');break;
+      case 'reloadBuild':{const url=new URL(window.location.href);url.searchParams.set('build',`${GAME_VERSION}-${GAME_BUILD}`);window.location.replace(url.toString());break;}
       case 'drop':this.actions.dropItem(this.selectedSlot);break;
       case 'consume':this.actions.consume(this.selectedSlot);break;
       case 'equip':this.actions.selectSlot(this.selectedSlot);this.actions.resume();break;
@@ -320,7 +327,8 @@ export class UI {
   }
 
   private slider(name: string, label: string, min: number, max: number, step: number): string {return `<div class="setting-row"><label for="setting-${name}">${label}</label><div class="setting-slider"><input id="setting-${name}" data-setting="${name}" type="range" min="${min}" max="${max}" step="${step}"><output data-setting-value="${name}"></output></div></div>`;}
-  private settingValue(name: string, value: number): string {return name.includes('Volume')?`${Math.round(value*100)}%`:name==='fov'?`${value}°`:`${value.toFixed(1)}×`;}
+  private toggle(name:'invertY'|'headBob'|'shadows'|'showCompass',label:string,detail:string):string{return `<div class="setting-row toggle-row"><label>${label}<small>${detail}</small></label><div class="toggle-options"><button data-toggle="${name}" data-value="false">OFF</button><button data-toggle="${name}" data-value="true">ON</button></div></div>`;}
+  private settingValue(name: string, value: number): string {if(name.includes('Volume')||name==='crosshairOpacity')return `${Math.round(value*100)}%`;if(name==='fov'||name==='viewmodelFov')return `${Math.round(value)}°`;if(name==='renderScale')return `${Math.round(value*100)}%`;return `${value.toFixed(1)}×`;}
   private pieceIcon(piece: PieceType): string {const shapes:Record<PieceType,string>={foundation:'<path d="m3 12 9-5 9 5-9 5zM3 12v4l9 5 9-5v-4M12 17v4"/>',wall:'<path d="M5 4h14v17H5zM8 4v17M12 4v17M16 4v17"/>',doorway:'<path d="M4 3h16v18h-5V9H9v12H4z"/>',floor:'<path d="m3 12 9-6 9 6-9 6zM6 10l9 6M10 8l9 6"/>',roof:'<path d="m2 15 10-10 10 10M5 12v8h14v-8M12 5v15"/>',door:'<path d="M6 3h12v18H6zM15 12v2M9 3v18M4 21h16"/>'};return `<svg viewBox="0 0 24 24">${shapes[piece]}</svg>`;}
   private character(): string {return `<svg class="character-art" viewBox="0 0 240 470" aria-label="Survivor illustration"><defs><linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#aaa492"/><stop offset="1" stop-color="#4e5249"/></linearGradient><linearGradient id="cloth" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#737a6d"/><stop offset="1" stop-color="#343d34"/></linearGradient></defs><ellipse cx="122" cy="450" rx="68" ry="9" fill="#0b1513" opacity=".45"/><g stroke="#2c342d" stroke-width="1.5"><path d="m99 80-3 19-28 16-14 44-16 78 9 11 13-12 15-65 10-12 1 89 65 2 7-88 10 20 13 57 13 13 10-9-17-94-15-29-35-19-2-26" fill="url(#skin)"/><path d="m87 237-4 72 5 49-1 66 23 4 9-66 4-48 5 48 7 66 23-3-1-70 2-41-9-76" fill="url(#cloth)"/><path d="m87 419-4 20-17 7v8h43l4-31m22 0 1 30h40l-1-9-19-10-2-15" fill="#3c4138"/><path d="m83 114 17-11 22 14 19-16 15 12-1 58-8 48-60-1-6-52z" fill="url(#cloth)"/><path d="m99 46 1-13 9-12 17-4 17 10 6 23-7 31-11 11-16-4-14-15z" fill="url(#skin)"/><path d="m99 47-2-10 5-13 13-8 18 2 11 11 4 16-9-5-8-14-11 9-20 7" fill="#393f36"/><path d="m110 56 8-2m13 0 8 2m-16 1-3 11 8 1m-12 8 15-1" fill="none"/><path d="m89 231 60 1 4 11-65 1z" fill="#80745b"/><path d="m110 231 17 1v14h-17z" fill="#303930"/><path d="m85 160 8 44m57-39-13 37m-48 97 24 2m19-2 22-1m-63 52 18 4m27-2 18-4" stroke="#959982" opacity=".35"/><path d="m46 238-4 9 2 16 7 5 7-9-1-17m127 1-1 18 8 10 7-4 3-15-7-13" fill="url(#skin)"/><path d="m96 100 17 10m15-1 16-10m-21 17 1 107" fill="none" opacity=".6"/></g><path d="M36 101h-9v306h9M207 101h9v306h-9" stroke="#c9cfb9" stroke-opacity=".15" fill="none"/><path d="M18 168h23M201 168h23M18 318h23M201 318h23" stroke="#c9cfb9" stroke-opacity=".15"/></svg>`;}
 }

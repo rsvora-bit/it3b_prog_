@@ -12,7 +12,7 @@ export interface DroppedItem {id:string; stack:ItemStack; position:Vec3}
 export interface PlayerStats {health:number; hunger:number; thirst:number; stamina:number}
 export interface CraftJob {recipeId:string; remaining:number; total:number}
 export interface GameState {progression?:{version:1;stations:Station[];spawnId?:string;waypoint?:{x:number;z:number};weather:{kind:'clear'|'rain'|'fog'|'storm';blend:number;rain?:number;mist?:number;storm?:number;remaining:number};lootGenerated:boolean};version:1; worldGeneration?:1|2; seed:number; elapsed:number; timeOfDay:number; player:{position:Vec3; yaw:number; pitch:number; stats:PlayerStats}; inventory:(ItemStack|null)[]; activeSlot:number; structures:Structure[]; nodeChanges:Record<string,number>; drops:DroppedItem[]; craftQueue:CraftJob[]; nextId:number}
-export interface Settings {sensitivity:number; fov:number; masterVolume:number; effectsVolume:number; quality:'low'|'medium'|'high'}
+export interface Settings {sensitivity:number; fov:number; viewmodelFov:number; invertY:boolean; headBob:boolean; masterVolume:number; effectsVolume:number; quality:'low'|'medium'|'high'; renderScale:number; shadows:boolean; crosshairOpacity:number; showCompass:boolean}
 export interface BuildCandidate {pieceType:PieceType; position:Vec3; rotation:number; valid:boolean; reason:string; parentId?:string; socketId?:string; snapped:boolean}
 export type Screen = 'menu'|'playing'|'inventory'|'pause'|'settings'|'dead'|'station';
 export interface InteractionInfo {title:string; action:string; key:string; detail?:string; progress?:number}
