@@ -48,3 +48,17 @@
 .history-panel .section-heading{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}.history-panel .section-heading h2{font-family:var(--title-font);font-size:32px;letter-spacing:.055em;margin:7px 0 0}.history-panel .close-button{font-size:26px;color:#b9c7ad;padding:0;background:none}.history-current{display:grid;grid-template-columns:1fr auto;align-items:end;border-top:1px solid #d3dfbe22;border-bottom:1px solid #d3dfbe22;padding:15px 0;margin-bottom:12px}.history-current>span{font-size:8px;letter-spacing:.17em;color:#93a489}.history-current>strong{grid-row:1/3;grid-column:2;font-family:var(--title-font);font-size:38px;color:#efd7bd;letter-spacing:.02em}.history-current>small{font-size:9px;color:#98aa91;margin-top:5px;letter-spacing:.08em}.history-list{overflow:auto;padding-right:10px;scrollbar-width:thin}.history-entry{padding:18px 0;border-bottom:1px solid #d3dfbe1f}.history-entry header{display:flex;justify-content:space-between;color:#96a98f;font-size:9px;letter-spacing:.1em}.history-entry header strong{color:#dca173;font-family:var(--title-font);font-size:15px}.history-entry h3{font-family:var(--title-font);font-size:22px;margin:8px 0 11px;color:#dde4d3}.history-entry ul{margin:0;padding-left:17px;color:#aebba5;font-size:10px;line-height:1.65}.history-entry li+li{margin-top:4px}
 @media(max-width:850px){.history-panel{inset:7% 5%;width:auto}.history-panel .section-heading h2{font-size:27px}}
 @media(max-width:640px){.history-panel{padding:20px}.history-current>strong{font-size:30px}.history-entry h3{font-size:19px}.history-entry ul{font-size:9px}}
+
+
+/* v0.2.1 expanded settings */
+.crosshair{opacity:var(--crosshair-opacity,1)}
+.tide-ui.hide-compass .compass-wrap{display:none}
+.setting-row label small,.toggle-row label small,.setting-buttons label small{display:block;font-size:9px;line-height:1.45;color:#819875;margin-top:5px;letter-spacing:0}
+.toggle-options{display:flex;gap:4px}
+.toggle-options button,.setting-buttons button,.settings-actions button{font-family:var(--title-font);font-size:10px;background:#b6c9a21a;border:1px solid #b6c9a22b;letter-spacing:.07em;padding:7px 11px;color:#9faf91}
+.toggle-options button.active{border-color:#c9956399;background:#b2753f38;color:#e3cfaa}
+.toggle-options button:hover,.setting-buttons button:hover,.settings-actions button:hover{background:#b6c9a232}
+.settings-actions{display:flex;justify-content:flex-end;margin:7px 0 2px}
+.setting-buttons{align-items:flex-start;margin-top:10px}
+.setting-buttons>div{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end}
+.settings-intro small{font-family:var(--title-font);font-size:9px;letter-spacing:.09em;color:#8fa181}

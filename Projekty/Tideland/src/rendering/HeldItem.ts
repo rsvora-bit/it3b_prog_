@@ -59,6 +59,7 @@ export class HeldItem {
     } else if(item==='berries'){for(let i=0;i<7;i++)this.mesh(new THREE.SphereGeometry(.022,8,6),new THREE.MeshStandardMaterial({color:'#954443',roughness:.6}),.23+(i%3)*.03,-.02-Math.floor(i/3)*.023,-.64);}
     else this.mesh(new THREE.CylinderGeometry(.065,.06,.18,10),item==='bandage'?new THREE.MeshStandardMaterial({color:'#ccc4a4'}):this.metal,.27,-.02,-.63);
   }
+  setFov(value:number){this.camera.fov=THREE.MathUtils.clamp(value,40,75);this.camera.updateProjectionMatrix();}
   hit(){this.swing=1;}
   update(dt:number,speed:number){
     this.t+=dt;this.swing=Math.max(0,this.swing-dt*3.8);this.equip=Math.max(0,this.equip-dt*5);

@@ -284,9 +284,10 @@ describe('versioned persistence', () => {
   });
 
   it('persists settings separately and rejects out-of-range values', () => {
-    const settings = { sensitivity: 1.4, fov: 90, masterVolume: 0.3, effectsVolume: 0.6, quality: 'low' as const };
+    const settings = { ...DEFAULT_SETTINGS, sensitivity: 1.4, fov: 90, masterVolume: 0.3, effectsVolume: 0.6, quality: 'low' as const };
     saveSettings(settings);
-    expect(loadSettings()).toEqual(settings);
+    expect(loadSettings()).toMatchObject(settings);
+    expect(loadSettings()).toMatchObject({viewmodelFov:50,invertY:false,headBob:false,renderScale:1,shadows:true,crosshairOpacity:1,showCompass:true});
     expect(hasSave()).toBe(false);
     localStorage.setItem(SAVE.SETTINGS_KEY, JSON.stringify({ sensitivity: -10, fov: 300, quality: 'ultra', effectsVolume: 0.2 }));
     expect(loadSettings()).toMatchObject({ sensitivity: 1, fov: DEFAULT_SETTINGS.fov, quality: 'high', effectsVolume: 0.2 });
