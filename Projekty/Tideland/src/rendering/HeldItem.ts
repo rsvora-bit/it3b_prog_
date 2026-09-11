@@ -23,7 +23,7 @@ export class HeldItem {
     this.hand.traverse(o=>{if(!(o instanceof THREE.Mesh))return;o.geometry.dispose();const materials=Array.isArray(o.material)?o.material:[o.material];for(const material of materials)if(!shared.includes(material as THREE.MeshStandardMaterial))material.dispose();});
     this.hand.clear();
   }
-  set(item:ItemId|null){if(item===this.active)return;this.active=item;this.flameOuter=null;this.flameInner=null;this.clearHand();if(!item||['wood','stone','metal','fiber','campfire'].includes(item))return;
+  set(item:ItemId|null){if(item===this.active)return;this.active=item;this.flameOuter=null;this.flameInner=null;this.clearHand();if(!item||['wood','stone','metal','ore','fiber','campfire','storage','furnace','bedroll','workbench1','workbench2','workbench3'].includes(item))return;
     this.equip=1;
     // A tapered cloth forearm and closed, articulated work-glove grip.
     const forearm=this.mesh(new THREE.CylinderGeometry(.058,.086,.48,16,8),this.sleeve,.30,-.34,-.43);forearm.rotation.x=-.50;forearm.rotation.z=-.12;
