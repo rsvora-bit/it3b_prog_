@@ -24,6 +24,31 @@ jobs:
       - name: Apply settings patch
         run: python3 Projekty/Tideland/scripts/apply-v021-settings.py
 
+      - name: Fix expanded settings TypeScript typing
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          ui=Path('Projekty/Tideland/src/ui/UI.ts')
+          text=ui.read_text()
+          old="""      const name = input.dataset.setting as keyof Settings | undefined;
+                if(!name || name === 'quality') return;
+                this.settings[name] = Number(input.value);"""
+          new="""      const name = input.dataset.setting as 'sensitivity'|'fov'|'viewmodelFov'|'masterVolume'|'effectsVolume'|'renderScale'|'crosshairOpacity'|undefined;
+                if(!name) return;
+                this.settings[name] = Number(input.value);"""
+          if old not in text:
+              raise SystemExit('UI numeric setting handler not found')
+          ui.write_text(text.replace(old,new,1))
+
+          test=Path('Projekty/Tideland/tests/simulation.test.ts')
+          text=test.read_text()
+          old="const settings = { sensitivity: 1.4, fov: 90, masterVolume: 0.3, effectsVolume: 0.6, quality: 'low' as const };"
+          new="const settings = { ...DEFAULT_SETTINGS, sensitivity: 1.4, fov: 90, masterVolume: 0.3, effectsVolume: 0.6, quality: 'low' as const };"
+          if old not in text:
+              raise SystemExit('settings test object not found')
+          test.write_text(text.replace(old,new,1))
+          PY
+
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
