@@ -1,9 +1,17 @@
-export const GAME_VERSION='0.2.1';
-export const GAME_BUILD='EA-02.1';
+export const GAME_VERSION='0.2.2';
+export const GAME_BUILD='EA-02.2';
 export const GAME_RELEASE_DATE='2026-09-11';
 
 export interface ChangeEntry {version:string;date:string;title:string;changes:string[]}
 export const CHANGELOG:ChangeEntry[]=[
+  {version:'0.2.2',date:'2026-09-11',title:'Input stability & loading warm-up',changes:[
+    'Added real staged loading progress and renderer warm-up before the world is revealed.',
+    'Mouse look is now coalesced once per render frame instead of applying every browser event immediately.',
+    'Large pointer-lock bursts are capped so a short browser or GPU stall cannot throw the camera sideways.',
+    'Mouse deltas are normalized for high-DPI displays to make Windows and Retina behaviour more consistent.',
+    'Expanded sensitivity down to 0.05x and reduced the base look scale for precise low-sensitivity play.',
+    'Reset FPS timing after warm-up so startup compilation frames do not pollute the live FPS meter.'
+  ]},
   {version:'0.2.1',date:'2026-09-11',title:'Cross-device camera & settings patch',changes:[
     'Kept the world FOV behaviour that is working correctly on the Windows reference build.',
     'Added separate held-item FOV, invert Y and optional head bob controls.',
