@@ -1,6 +1,9 @@
 import type { RecipeDefinition } from '../core/types';
 
 export const RECIPES: Record<string, RecipeDefinition> = {
+  workshop_pickaxe:{id:'workshop_pickaxe',resultItemId:'pickaxe',resultCount:1,ingredients:{wood:40,metal:15},requiredWorkbenchLevel:1,category:'Tools',craftTime:2},
+  workshop_dressings:{id:'workshop_dressings',resultItemId:'bandage',resultCount:5,ingredients:{fiber:60},requiredWorkbenchLevel:2,category:'Survival',craftTime:4},
+  workshop_lights:{id:'workshop_lights',resultItemId:'torch',resultCount:3,ingredients:{wood:50,fiber:15},requiredWorkbenchLevel:3,category:'Tools',craftTime:3},
   storage:{id:'storage',resultItemId:'storage',resultCount:1,ingredients:{wood:160,fiber:20},category:'Building',craftTime:3},
   furnace:{id:'furnace',resultItemId:'furnace',resultCount:1,ingredients:{stone:200,wood:100,fiber:30},category:'Building',craftTime:5},
   campfire:{id:'campfire',resultItemId:'campfire',resultCount:1,ingredients:{stone:35,wood:40},category:'Survival',craftTime:2},
