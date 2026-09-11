@@ -1,6 +1,8 @@
 # Tideland
 
-Tideland is an original, procedural first-person island survival sandbox built with TypeScript, Vite, Three.js, Rapier 3D, and a DOM-based interface. It uses no extracted game assets or branding.
+> **School-repository snapshot — v0.2.2 / EA-02.2.** This copy is intentionally kept here as the latest school-repo snapshot. Active development has moved to [`rsvora-bit/RUST---clon`](https://github.com/rsvora-bit/RUST---clon).
+
+Tideland is an original procedural first-person island survival sandbox built with TypeScript, Vite, Three.js, Rapier 3D, and a DOM-based interface. It uses no extracted game assets or branding.
 
 ## Run
 
@@ -9,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open the local URL printed by Vite. The production checks are:
+Production checks:
 
 ```bash
 npm test
@@ -26,25 +28,10 @@ npm run build
 
 Worlds, settings, inventory, crafting, structures, doors, dropped items, and depleted resource nodes persist locally in the browser.
 
-## Polish validation
+## Snapshot status
 
-Current implementation notes, coverage and limitations: [POLISH-STATUS.md](POLISH-STATUS.md).
-Screenshot gallery: [artifacts/polish/index.html](artifacts/polish/index.html).
+This repository stays on **v0.2.2 / EA-02.2** as a stable school-project snapshot. It includes the staged loading/warm-up flow, frame-coalesced mouse input with burst protection, expanded settings, version history, the corrected yaw-based movement path, and the current world FOV implementation.
 
-With the dev server running, `npm run test:browser` runs isolated Chrome gameplay,
-UI and multi-level persistence checks. `node scripts/polish-settings-qa.mjs` checks
-settings persistence, crafting capacity UI and a dense forest view. Set `CHROME_BIN`
-if Chrome is not installed at the default macOS application path.
+Further fixes, features and releases should be made in [`RUST---clon`](https://github.com/rsvora-bit/RUST---clon), not in this school-repository copy.
 
-## Camera and field of view
-
-Settings use horizontal FOV at a 16:9 reference aspect, 60–100 degrees (default 90). The renderer converts this to Three.js vertical FOV and preserves vertical coverage when resizing; ultrawide displays show more on the sides. Existing numeric preferences now follow this convention. Changes apply live and persist. Sprint adds a smooth 2-degree offset. Held items use a separate fixed 50-degree vertical camera, so world FOV does not stretch them.
-
-Run `node scripts/camera-fov-qa.mjs` with the Vite server running for camera/persistence/aspect regression checks. Open `artifacts/camera-fov/index.html` for exact-pose screenshot comparisons.
-
-
-## Version
-
-Current release: **0.2.0 / EA-02** (2026-09-11).
-
-Development history is tracked in [`CHANGELOG.md`](./CHANGELOG.md) and is also visible from the in-game **HISTORY** menu.
+Development history up to this snapshot is recorded in [`CHANGELOG.md`](./CHANGELOG.md) and is also visible from the in-game **HISTORY** menu.
