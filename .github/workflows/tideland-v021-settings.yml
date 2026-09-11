@@ -1,0 +1,132 @@
+name: Validate Tideland v0.2.1 settings
+
+on:
+  push:
+    branches: [fix/tideland-settings-cache-v021]
+    paths:
+      - 'Projekty/Tideland/scripts/apply-v021-settings.py'
+      - '.github/workflows/tideland-v021-settings.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-test-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout patch branch
+        uses: actions/checkout@v6
+        with:
+          ref: fix/tideland-settings-cache-v021
+          fetch-depth: 0
+
+      - name: Apply settings patch
+        run: python3 Projekty/Tideland/scripts/apply-v021-settings.py
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: Projekty/Tideland/package-lock.json
+
+      - name: Install dependencies
+        working-directory: Projekty/Tideland
+        run: npm ci
+
+      - name: Unit tests
+        working-directory: Projekty/Tideland
+        run: npm test
+
+      - name: Production build
+        working-directory: Projekty/Tideland
+        run: npm run build
+
+      - name: Install Chromium
+        working-directory: Projekty/Tideland
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser smoke — settings and camera
+        working-directory: Projekty/Tideland
+        shell: bash
+        run: |
+          npm run dev -- --host 127.0.0.1 > /tmp/tideland-vite.log 2>&1 &
+          VITE_PID=$!
+          trap 'kill $VITE_PID || true' EXIT
+          for i in {1..40}; do curl -fsS http://127.0.0.1:5173 >/dev/null && break; sleep 1; done
+          node --input-type=module <<'NODE'
+          import { chromium } from '@playwright/test';
+          import assert from 'node:assert/strict';
+          const browser=await chromium.launch({headless:true});
+          const page=await browser.newPage({viewport:{width:1600,height:900}});
+          const errors=[];
+          page.on('pageerror',e=>errors.push(e.message));
+          page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
+          const click=selector=>page.locator(selector).evaluate(el=>el.click());
+          const setRange=async(name,value)=>page.locator(`input[data-setting="${name}"]`).evaluate((el,v)=>{el.value=String(v);el.dispatchEvent(new Event('input',{bubbles:true}));},value);
+          try{
+            await page.goto('http://127.0.0.1:5173/?ci=1');
+            await page.waitForFunction(()=>window.__TIDELAND);
+            await page.locator('.loading-screen').waitFor({state:'hidden'});
+            assert.match(await page.locator('.menu-footer').innerText(),/VERSION 0\.2\.1.*EA-02\.1/);
+            await click('.menu-screen [data-action="settings"]');
+            await setRange('fov',60);await page.waitForTimeout(50);
+            let state=await page.evaluate(()=>window.__TIDELAND.cameraState());
+            assert(Math.abs(state.world.fov-60)<0.01,`world FOV changed semantics: ${state.world.fov}`);
+            await setRange('fov',100);await page.waitForTimeout(50);
+            state=await page.evaluate(()=>window.__TIDELAND.cameraState());
+            assert(Math.abs(state.world.fov-100)<0.01,`world FOV changed semantics: ${state.world.fov}`);
+            await setRange('viewmodelFov',70);await page.waitForTimeout(50);
+            state=await page.evaluate(()=>window.__TIDELAND.cameraState());
+            assert(Math.abs(state.viewmodel.fov-70)<0.01);
+            await setRange('renderScale',0.75);
+            await setRange('crosshairOpacity',0.45);
+            await click('[data-toggle="invertY"][data-value="true"]');
+            await click('[data-toggle="headBob"][data-value="true"]');
+            await click('[data-toggle="shadows"][data-value="false"]');
+            await click('[data-toggle="showCompass"][data-value="false"]');
+            state=await page.evaluate(()=>window.__TIDELAND.cameraState());
+            assert.equal(state.settings.invertY,true);
+            assert.equal(state.settings.headBob,true);
+            assert.equal(state.settings.shadows,false);
+            assert.equal(state.settings.showCompass,false);
+            assert.equal(state.settings.renderScale,0.75);
+            assert.equal(state.settings.crosshairOpacity,0.45);
+            assert.equal(await page.locator('.tide-ui').evaluate(el=>el.classList.contains('hide-compass')),true);
+            assert.equal(await page.locator('.crosshair').evaluate(el=>getComputedStyle(el).opacity),'0.45');
+            await click('[data-action="resetCamera"]');
+            state=await page.evaluate(()=>window.__TIDELAND.cameraState());
+            assert.equal(state.settings.fov,90);
+            assert.equal(state.settings.viewmodelFov,50);
+            assert.equal(state.settings.invertY,false);
+            assert.equal(state.settings.headBob,false);
+            assert.deepEqual(errors,[]);
+          }finally{await browser.close();}
+          NODE
+
+      - name: Commit validated patch
+        run: |
+          rm -f Projekty/Tideland/scripts/apply-v021-settings.py .github/workflows/tideland-v021-settings.yml
+          git config user.name 'Roman Svora'
+          git config user.email 'roman.svora.ml@gmail.com'
+          git add -A -- \
+            .github/workflows/tideland-v021-settings.yml \
+            Projekty/Tideland/scripts/apply-v021-settings.py \
+            Projekty/Tideland/CHANGELOG.md \
+            Projekty/Tideland/index.html \
+            Projekty/Tideland/package.json \
+            Projekty/Tideland/package-lock.json \
+            Projekty/Tideland/src/core/types.ts \
+            Projekty/Tideland/src/config/balance.ts \
+            Projekty/Tideland/src/save/storage.ts \
+            Projekty/Tideland/src/player/PlayerController.ts \
+            Projekty/Tideland/src/rendering/HeldItem.ts \
+            Projekty/Tideland/src/app/GameApp.ts \
+            Projekty/Tideland/src/ui/UI.ts \
+            Projekty/Tideland/src/ui/style.css \
+            Projekty/Tideland/src/config/version.ts \
+            Projekty/Tideland/tests/simulation.test.ts
+          git status --short
+          git commit -m 'Tideland v0.2.1 cross-device settings patch'
+          git push origin HEAD:fix/tideland-settings-cache-v021
