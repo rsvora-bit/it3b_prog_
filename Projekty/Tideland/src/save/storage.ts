@@ -79,7 +79,7 @@ export function resetSave(): void { try { localStorage.removeItem(SAVE.GAME_KEY)
 function normalizeSettings(value: unknown): Settings {
   if (!record(value)) return { ...DEFAULT_SETTINGS };
   return {
-    sensitivity: finite(value.sensitivity, 0.1, 3) ? value.sensitivity : DEFAULT_SETTINGS.sensitivity,
+    sensitivity: finite(value.sensitivity, 0.05, 3) ? value.sensitivity : DEFAULT_SETTINGS.sensitivity,
     fov: finite(value.fov, 55, 110) ? normalizeFov(value.fov) : DEFAULT_SETTINGS.fov,
     viewmodelFov: finite(value.viewmodelFov, 40, 75) ? value.viewmodelFov : DEFAULT_SETTINGS.viewmodelFov,
     invertY: typeof value.invertY === 'boolean' ? value.invertY : DEFAULT_SETTINGS.invertY,

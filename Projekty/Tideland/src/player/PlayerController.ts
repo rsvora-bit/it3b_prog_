@@ -12,7 +12,7 @@ export class PlayerController {
   private previousEye=new THREE.Vector3();private currentEye=new THREE.Vector3();
   onStep:()=>void=()=>{};private stepDistance=0;
   constructor(readonly physics:PhysicsWorld,readonly camera:THREE.PerspectiveCamera,private input:Input,private settings:Settings,state:GameState){this.yaw=state.player.yaw;this.pitch=state.player.pitch;this.currentEye.set(state.player.position.x,state.player.position.y+PLAYER.EYE_HEIGHT,state.player.position.z);this.previousEye.copy(this.currentEye);this.renderCamera(1);}
-  look(dx:number,dy:number){this.yaw-=dx*0.002*this.settings.sensitivity;const ySign=this.settings.invertY?1:-1;this.pitch=THREE.MathUtils.clamp(this.pitch+dy*0.002*this.settings.sensitivity*ySign,-1.48,1.48);this.camera.rotation.order='YXZ';this.camera.rotation.set(this.pitch,this.yaw,0);}
+  look(dx:number,dy:number){const scale=0.0009*this.settings.sensitivity;this.yaw-=dx*scale;const ySign=this.settings.invertY?1:-1;this.pitch=THREE.MathUtils.clamp(this.pitch+dy*scale*ySign,-1.48,1.48);this.camera.rotation.order='YXZ';this.camera.rotation.set(this.pitch,this.yaw,0);}
   jump(){this.jumpRequested=true;}
   setSettings(s:Settings){this.settings=s;this.headBob=s.headBob;}
   tick(dt:number,state:GameState,active:boolean){
