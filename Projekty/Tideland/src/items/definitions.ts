@@ -1,6 +1,6 @@
 import type { ItemDefinition, ItemId } from '../core/types';
 
-const item = (id: ItemId, displayName: string, description: string, category: ItemDefinition['category'], maxStack: number, tags: string[], extra: Partial<ItemDefinition> = {}): ItemDefinition => ({ id, displayName, description, category, maxStack, tags, icon: `/assets/icons/${id}.svg`, ...extra });
+const item = (id: ItemId, displayName: string, description: string, category: ItemDefinition['category'], maxStack: number, tags: string[], extra: Partial<ItemDefinition> = {}): ItemDefinition => ({ id, displayName, description, category, maxStack, tags, icon: `assets/icons/${id}.svg`, ...extra });
 
 export const ITEMS: Record<ItemId, ItemDefinition> = {
   ore: item('ore', 'Raw metal resource', 'Process with fuel at a field processor.', 'resource', 1000, ['survival'], {placeable:false}),
