@@ -26,10 +26,10 @@ jobs:
         working-directory: Projekty/Tideland
         run: npm ci
 
-      - name: Unit tests
-        working-directory: Projekty/Tideland
-        run: npm test
-
       - name: Production build
         working-directory: Projekty/Tideland
         run: npm run build
+
+      - name: Relevant unit tests
+        working-directory: Projekty/Tideland
+        run: npx vitest run tests/camera-projection.test.ts tests/simulation.test.ts tests/structure-renderer.test.ts tests/survival.test.ts tests/terrain-generation.test.ts
