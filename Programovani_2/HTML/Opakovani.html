@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TEST - opakování HTML</title>
+</head>
+
+<body>
+
+    <!-- NADPISY -->
+    <h1>Hlavní nadpis stránky</h1>
+    <h2>Nadpis druhé úrovně</h2>
+    <h3>Nadpis třetí úrovně</h3>
+    <h4>Nadpis čtvrté úrovně</h4>
+    <h5>Nadpis páté úrovně</h5>
+    <h6>Nadpis šesté úrovně</h6>
+
+    <!-- TEXT -->
+    <p>Toto je obyčejný odstavec.</p>
+
+    <p>
+        Tento text je na prvním řádku.<br>
+        Tento text je na druhém řádku.
+    </p>
+
+    <strong>Tento text je důležitý.</strong>
+
+    <hr>
+
+
+    <!-- ZNAKOVÉ ENTITY -->
+    <p>Nezlomitelná mezera je &amp;nbsp;</p>
+    <p>&copy; 2026</p>
+    <p>&alpha; &beta; &lambda;</p>
+    <p>&euro; &pound; &yen;</p>
+
+    <hr>
+
+
+    <!-- NEUSPOŘÁDANÝ SEZNAM -->
+    <h2>Nákupní seznam</h2>
+
+    <ul>
+        <li>Rohlíky</li>
+        <li>Mléko</li>
+        <li>Sýr</li>
+    </ul>
+
+
+    <!-- USPOŘÁDANÝ SEZNAM -->
+    <h2>Postup práce</h2>
+
+    <ol type="A">
+        <li>Zapnout počítač</li>
+        <li>Spustit Visual Studio Code</li>
+        <li>Vytvořit HTML soubor</li>
+    </ol>
+
+
+    <!-- VÝKLADOVÝ SEZNAM -->
+    <h2>Počítačové pojmy</h2>
+
+    <dl>
+        <dt><strong>CPU</strong></dt>
+        <dd>Procesor počítače</dd>
+
+        <dt><strong>RAM</strong></dt>
+        <dd>Operační paměť</dd>
+
+        <dt><strong>GPU</strong></dt>
+        <dd>Grafická karta</dd>
+    </dl>
+
+    <hr>
+
+
+    <!-- TABULKA -->
+    <h2>Tabulka studentů</h2>
+
+    <table border="1">
+
+        <tr>
+            <th colspan="4">Seznam studentů</th>
+        </tr>
+
+        <tr>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>Věk</th>
+            <th>Město</th>
+        </tr>
+
+        <tr>
+            <td>Jan</td>
+            <td>Novák</td>
+            <td>17</td>
+            <td>Brno</td>
+        </tr>
+
+        <tr>
+            <td>Petr</td>
+            <td>Svoboda</td>
+            <td>18</td>
+            <td>Praha</td>
+        </tr>
+
+    </table>
+
+    <hr>
+
+
+    <!-- OBRÁZEK -->
+    <h2>Obrázek</h2>
+
+    <img
+        src="obrazek.jpg"
+        alt="Ukázkový obrázek"
+        width="300"
+        height="200"
+        title="Ukázkový obrázek"
+    >
+
+    <br>
+    <br>
+
+
+    <!-- ODKAZY -->
+    <h2 id="odkazy">Odkazy</h2>
+
+    <a href="https://www.seznam.cz/" target="_blank">
+        Odkaz na Seznam
+    </a>
+
+    <br>
+
+    <a href="#formular">
+        Přejít na formulář
+    </a>
+
+    <hr>
+
+
+    <!-- FORMULÁŘ -->
+    <h2 id="formular">Přihláška ke studiu</h2>
+
+    <form>
+
+        <p>
+            Jméno:
+            <input type="text">
+        </p>
+
+        <p>
+            Příjmení:
+            <input type="text">
+        </p>
+
+        <p>
+            Datum narození:
+            <input type="date">
+        </p>
+
+
+        <p>
+            Krajské město:
+
+            <select>
+                <option>Praha</option>
+                <option>Brno</option>
+                <option>Ostrava</option>
+                <option>Plzeň</option>
+            </select>
+        </p>
+
+
+        <p>
+            Pohlaví:
+
+            <select>
+                <option>Muž</option>
+                <option>Žena</option>
+            </select>
+        </p>
+
+
+        <p>
+            Délka studijního oboru:
+
+            <input type="radio" name="obor"> Tříletý
+            <input type="radio" name="obor"> Čtyřletý
+        </p>
+
+
+        <p>
+            Studijní obor:
+
+            <select>
+                <option>Informační technologie</option>
+                <option>Ekonomika</option>
+                <option>Strojírenství</option>
+            </select>
+        </p>
+
+
+        <p>
+            Povaha studenta:
+
+            <input type="checkbox" name="povaha"> Společenský
+            <input type="checkbox" name="povaha"> Zvídavý
+            <input type="checkbox" name="povaha" checked> Zodpovědný
+        </p>
+
+
+        <p>
+            Oblíbená barva:
+            <input type="color">
+        </p>
+
+
+        <p>
+            <button>Odeslat</button>
+        </p>
+
+        <p>
+            <input type="submit">
+        </p>
+
+        <p>
+            <input type="reset">
+        </p>
+
+    </form>
+
+    <h2>Obrázek</h2>
+
+    <img
+        src="https://scontent-prg1-1.xx.fbcdn.net/v/t1.15752-9/406059342_2736837063140870_7554913594236218661_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=56tUfv7TbtUQ7kNvwG4oNUY&_nc_oc=AdpNasmV0L2tGJOi2X_SnowTFtjRUCtqK2btGAqoZrkizizHMve3-aAaDrPXJkMWPOs&_nc_zt=23&_nc_ht=scontent-prg1-1.xx&_nc_ss=7b2a8&oh=03_Q7cD6gEcWGxJmdgyuken1eGubHjmZvm9kgEsKAUednq1vq5Srg&oe=6AEDEB2D"
+        alt="Ukázkový obrázek"
+        width="300"
+        height="300"
+        title="Obrázek"
+    >
+
+</body>
+</html>
