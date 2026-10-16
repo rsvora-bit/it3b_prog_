@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 class Program
 {
     static void Main()
@@ -23,7 +20,7 @@ class Program
             new Trun()
         };
 
-        Console.WriteLine("VÍTEJ V LABYRINTU!");
+        Console.WriteLine("VITEJ V LABYRINTU!");
         Console.WriteLine("------------------");
 
         foreach (Mistnost m in mistnosti)
@@ -42,13 +39,13 @@ class Program
 
         if (hrac.Vyhral)
         {
-            Console.WriteLine("VYHRÁL JSI!");
-            Console.WriteLine($"Dokončil jsi labyrint s {hrac.Penize} penězi!");
+            Console.WriteLine("VYHRAL JSI!");
+            Console.WriteLine($"Dokoncil jsi labyrint s {hrac.Penize} penezi!");
         }
         else
         {
-            Console.WriteLine("PROHRÁL JSI!");
-            Console.WriteLine("Došly ti životy.");
+            Console.WriteLine("PROHRAL JSI!");
+            Console.WriteLine("Dosly ti zivoty.");
         }
     }
 }
