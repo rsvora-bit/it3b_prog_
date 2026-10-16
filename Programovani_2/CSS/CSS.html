@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>IT3B - HTML a CSS</title>
+
+    <!-- CSS STYLY - určují vzhled HTML prvků -->
+    <style>
+
+        /* Nadpis první úrovně */
+        h1 {
+            font-variant: small-caps; /* Malé kapitálky */
+        }
+
+        /* Společný styl pro nadpisy h1 a h2 */
+        h2, h1 {
+            color: darkblue; /* Barva písma */
+            font-family: 'Gill Sans', 'Gill Sans MT',
+                         Calibri, 'Trebuchet MS', sans-serif;
+            border-bottom: 2px solid darkblue; /* Spodní čára */
+        }
+
+        /* Nastavení celé stránky */
+        body {
+            background-color: white; /* Barva pozadí */
+            color: black; /* Barva textu */
+            font-family: Arial, sans-serif; /* Druh písma */
+        }
+
+        /* Všechny odstavce */
+        p {
+            font-size: 20px; /* Velikost písma */
+            line-height: 1.5; /* Výška řádku */
+        }
+
+        /* Nadpis třetí úrovně */
+        h3 {
+            color: green;
+            text-align: center; /* Zarovnání na střed */
+        }
+
+        /* Tučný text */
+        strong {
+            color: red;
+        }
+
+        /* Kurzíva */
+        em {
+            color: purple;
+        }
+
+        /* Styl všech seznamů */
+        ul {
+            color: darkgreen;
+        }
+
+        /* Kontextový selektor - položky uvnitř ul */
+        ul li {
+            font-size: 18px;
+        }
+
+        /* Třída - lze použít u více prvků */
+        .vyznac {
+            color: red;
+            background-color: yellow;
+            font-weight: bold; /* Tučné písmo */
+        }
+
+        /* Identifikátor - pro konkrétní prvek */
+        #specialni {
+            color: blue;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        /* Styl pro div */
+        .ramecek {
+            border: 2px solid black; /* Ohraničení */
+            background-color: lightblue;
+            padding: 15px; /* Vnitřní odsazení */
+            margin: 10px; /* Vnější odsazení */
+        }
+
+        /* Styl tabulky */
+        table {
+            border-collapse: collapse; /* Spojí okraje buněk */
+        }
+
+        /* Buňky tabulky */
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        /* Hlavička tabulky */
+        th {
+            background-color: lightgray;
+        }
+
+        /* Styl odkazů */
+        a {
+            color: blue;
+            text-decoration: underline; /* Podtržení */
+        }
+
+        /* Odkaz po najetí myší */
+        a:hover {
+            color: red;
+        }
+
+        #dalsinadpisy{
+        text-align: center;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NADPISY -->
+    <h1>Nadpis první úrovně</h1>
+
+    <p>
+        Příliš <strong>žluťoučký kůň</strong>
+        úpěl ďábelské ódy.
+    </p>
+
+    <h2>Nadpis druhé úrovně</h2>
+
+    <p>
+        Toto je obyčejný odstavec.
+        <em>Toto je kurzíva.</em>
+    </p>
+
+    <h3>Nadpis třetí úrovně</h3>
+    <h4>Nadpis čtvrté úrovně</h4>
+    <h5>Nadpis páté úrovně</h5>
+    <h6>Nadpis šesté úrovně</h6>
+
+    <hr>
+
+    <!-- ODSTAVCE A ZALOMENÍ ŘÁDKU -->
+    <h2>Odstavce</h2>
+
+    <p>
+        Toto je první řádek.<br>
+        Toto je druhý řádek po zalomení.
+    </p>
+
+    <!-- TŘÍDA CLASS -->
+    <h2>Použití třídy</h2>
+
+    <p>
+        Toto je normální text a
+        <span class="vyznac">toto je zvýrazněný text</span>.
+    </p>
+
+    <p class="vyznac">
+        Celý tento odstavec používá třídu vyznac.
+    </p>
+
+    <!-- IDENTIFIKÁTOR ID -->
+    <h2>Použití ID</h2>
+
+    <p id="specialni">
+        Tento odstavec má vlastní styl pomocí ID.
+    </p>
+
+    <!-- DIV -->
+    <h2>Použití DIV</h2>
+
+    <div class="ramecek">
+        <h3>Obsah rámečku</h3>
+        <p>
+            DIV slouží k seskupení prvků.
+            Pomocí CSS můžeme nastavit pozadí,
+            okraje a odsazení.
+        </p>
+    </div>
+
+    <!-- NEUSPOŘÁDANÝ SEZNAM -->
+    <h2>Neuspořádaný seznam</h2>
+
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+
+    <!-- USPOŘÁDANÝ SEZNAM -->
+    <h2>Uspořádaný seznam</h2>
+
+    <ol>
+        <li>První položka</li>
+        <li>Druhá položka</li>
+        <li>Třetí položka</li>
+    </ol>
+
+    <!-- VÝKLADOVÝ SEZNAM -->
+    <h2>Výkladový seznam</h2>
+
+    <dl>
+        <dt>HTML</dt>
+        <dd>Jazyk pro strukturu webových stránek.</dd>
+
+        <dt>CSS</dt>
+        <dd>Jazyk pro vzhled webových stránek.</dd>
+    </dl>
+
+    <!-- TABULKA -->
+    <h2>Tabulka</h2>
+
+    <table>
+        <tr>
+            <th>Jazyk</th>
+            <th>Využití</th>
+        </tr>
+        <tr>
+            <td>HTML</td>
+            <td>Struktura stránky</td>
+        </tr>
+        <tr>
+            <td>CSS</td>
+            <td>Vzhled stránky</td>
+        </tr>
+        <tr>
+            <td>JavaScript</td>
+            <td>Interaktivita stránky</td>
+        </tr>
+    </table>
+
+    <!-- ODKAZY -->
+    <h2>Odkazy</h2>
+
+    <p>
+        <a href="https://www.w3schools.com">
+            Odkaz na W3Schools
+        </a>
+    </p>
+
+    <!-- FORMULÁŘ -->
+    <h2>Formulář</h2>
+
+    <form>
+        <p>
+            Jméno:
+            <input type="text" name="jmeno">
+        </p>
+
+        <p>
+            Heslo:
+            <input type="password" name="heslo">
+        </p>
+
+        <p>
+            <input type="checkbox" name="souhlas">
+            Souhlasím
+        </p>
+
+        <p>
+            <input type="radio" name="volba" value="ano"> Ano
+            <input type="radio" name="volba" value="ne"> Ne
+        </p>
+
+        <p>
+            <select name="predmet">
+                <option>HTML</option>
+                <option>CSS</option>
+                <option>JavaScript</option>
+            </select>
+        </p>
+
+        <p>
+            <textarea name="zprava"></textarea>
+        </p>
+
+        <input type="submit" value="Odeslat">
+        <input type="reset" value="Vymazat">
+    </form>
+
+    <hr>
+
+    <!-- ZNAKOVÉ ENTITY -->
+    <h2>Znakové entity</h2>
+
+    <p>
+        &copy; - copyright<br>
+        &lt; - menší než<br>
+        &gt; - větší než<br>
+        &amp; - ampersand<br>
+        &times; - znak násobení<br>
+        &alpha; - řecké alfa<br>
+        A&nbsp;B - nezlomitelná mezera
+    </p>
+
+</body>
+</html>
