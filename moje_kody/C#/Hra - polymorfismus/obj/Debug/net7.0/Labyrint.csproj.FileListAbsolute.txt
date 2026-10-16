@@ -1,0 +1,15 @@
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/bin/Debug/net7.0/Labyrint
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/bin/Debug/net7.0/Labyrint.deps.json
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/bin/Debug/net7.0/Labyrint.runtimeconfig.json
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/bin/Debug/net7.0/Labyrint.dll
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/bin/Debug/net7.0/Labyrint.pdb
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/Labyrint.csproj.AssemblyReference.cache
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/Labyrint.GeneratedMSBuildEditorConfig.editorconfig
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/Labyrint.AssemblyInfoInputs.cache
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/Labyrint.AssemblyInfo.cs
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/Labyrint.csproj.CoreCompileInputs.cache
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/Labyrint.dll
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/refint/Labyrint.dll
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/Labyrint.pdb
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/Labyrint.genruntimeconfig.cache
+/Users/romansvora/Documents/GitHub/it2b_prog_/moje_kody/C#/Hra - polymorfismus/obj/Debug/net7.0/ref/Labyrint.dll
