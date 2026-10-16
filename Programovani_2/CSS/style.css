@@ -38,3 +38,43 @@ a {
 a:hover {
     text-decoration: underline;
 }
+nav {
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10%;
+}
+nav a {
+    margin: 0 10px
+}
+hr {
+    border: 1px solid black;
+    height: 0;
+    background-color: grey;
+    margin: 30px 20px
+} 
+img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid grey;
+    border-radius: 8px;
+}
+table{
+    border: 2px solid grey;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: whitesmoke;
+
+}
+th {
+    background-color: blue;
+    color: white;
+}
+td, th {
+    padding: 10px;
+    border: 1px solid grey;
+    text-align: center;
+}
+tr:nth-child(odd) {
+    background-color: #f0f8ff;
+}
