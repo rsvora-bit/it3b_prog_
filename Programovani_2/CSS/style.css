@@ -1,7 +1,6 @@
-
-/* Nastavení celé stránky */
+                                                                /* Nastavení celé stránky */
 body {
-    background-color: #f1f1f1; /* Světle šedé pozadí */
+    background-color: #ffffff; /* Světle šedé pozadí */
     font-family: Arial, Helvetica, sans-serif; /* Typ písma */
     line-height: 1.6; /* Výška řádků */
     max-width: 1000px; /* Maximální šířka stránky */
@@ -9,12 +8,33 @@ body {
     padding: 20px; /* Vnitřní odsazení od okrajů */
 }
 
-/* Nastavení všech odstavců */
+                                                                /* Nastavení všech odstavců */
 p {
     text-align: justify; /* Zarovnání textu do bloku */
 }
 
-/* Nastavení nadpisů první úrovně */
+                                                                /* Nastavení nadpisů první úrovně */
 h1 {
     text-align: center; /* Zarovnání nadpisu na střed */
+    color: white;
+    background-color: blue;
+    padding: 20px;
+    border-radius: 10px;
+}
+h2 {
+    color: blue;
+    border-bottom: 2px solid rgb(147, 147, 199);
+    background-color: rgb(175, 196, 236);
+    padding: 5px;
+    border-radius: 15px;
+}
+h3 {
+    color: blue;
+}
+a {
+    color: blue;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }

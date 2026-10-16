@@ -1,10 +1,8 @@
-using System;
-
 class Trun : Mistnost
 {
     public override void Aktivuj(Hrac hrac)
     {
+        Console.WriteLine("Dorazil jsi k viteznemu trunu!");
         hrac.Vyhral = true;
-        Console.WriteLine("Dorazil jsi k vítěznému trůnu!");
     }
 }

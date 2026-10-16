@@ -1,24 +1,24 @@
-using System;
-
 class Fontana : Mistnost
 {
     public override void Aktivuj(Hrac hrac)
     {
-        Console.WriteLine("Našel jsi léčivou fontánu.");
+        Console.WriteLine("Nasel jsi lecivou fontanu!");
 
-        if (hrac.HP >= Hrac.MaxHP)
-        {
-            Console.WriteLine("Máš plné zdraví, léčení nepotřebuješ.");
-        }
-        else if (hrac.Penize >= 20)
+        if (hrac.Penize >= 20 && hrac.HP < 50)
         {
             hrac.Penize -= 20;
-            hrac.HP = Math.Min(Hrac.MaxHP, hrac.HP + 20);
-            Console.WriteLine("Vyléčil ses za 20 peněz.");
+            hrac.HP += 20;
+
+            if (hrac.HP > 50)
+            {
+                hrac.HP = 50;
+            }
+
+            Console.WriteLine("Vylecil ses za 20 penez.");
         }
         else
         {
-            Console.WriteLine("Na léčení potřebuješ 20 peněz.");
+            Console.WriteLine("Nemuzes se vylecit.");
         }
     }
 }

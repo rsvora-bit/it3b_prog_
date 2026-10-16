@@ -1,15 +1,11 @@
-using System;
-
 class Hrac
 {
-    public const int MaxHP = 50;
-
-    public int HP = MaxHP;
+    public int HP = 50;
     public int Penize = 0;
     public bool Vyhral = false;
 
     public void VypisStav()
     {
-        Console.WriteLine($"HP: {HP}, peníze: {Penize}");
+        Console.WriteLine($"HP: {HP}, Penize: {Penize}");
     }
 }
