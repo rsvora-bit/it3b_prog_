@@ -188,4 +188,25 @@ JeTezsi(zvire2)
 
 ---
 
+### 11. Systém oznámení
+
+1. Vytvoř třídu `Oznameni` obsahující:
+   - text oznámení a informaci, zda již bylo odesláno
+   - metodu `Odesli()`, která vypíše `Odesílám oznámení: [text]`
+2. Vytvoř dvě podtřídy `Email` a `SMS`, které metodu `Odesli()` přepíšou.
+3. Vytvoř třídu `SpravceOznameni` obsahující:
+   - dva listy oznámení – čekající a odeslaná
+   - metodu pro přidání nového oznámení do čekajících
+   - metodu, která odešle všechna čekající oznámení a přesune je mezi odeslaná. Vypíše tedy např.:
+
+   ```text
+   Odesílám e-mail: Zítra píšeme test.
+   Odesílám SMS: Přijdu pozdě.
+   Odesílám oznámení: Nová aktualizace.
+   ```
+
+**Rozšíření:** Lze si u oznámení uchovávat čas odeslání?
+
+---
+
 *K přepisu úloh z prezentace do Markdownu byl využit ChatGPT.*
