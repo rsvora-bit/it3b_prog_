@@ -1,0 +1,35 @@
+Zpracujte webovou stránku dle vzoru. 
+Strukturu HTML měnit nemusíte, doplňte pouze kaskádové styly.
+
+Využité vlastnosti jsou tyto:
+font-family
+font-size
+background-color
+margin
+color
+text-align
+text-transform
+letter-spacing
+width
+padding-bottom
+padding
+border-top
+border-bottom
+display
+justify-content
+gap (30px)
+
+---
+
+Velikost hlavního nadpisu je 30 pt, barvy na celém webu jsou následující: 
+CCFFCC, 006600, 003300 (nadpisy), white a black
+
+Písmo je Calibri, jeho velikost je 14 pt, v patě je menší (small). Vnější okraje celé stránky jsou 50 px.
+
+Velikost písma v navigaci je 18 pt, spodní vnitřní okraj 15 px a spodní ohraničení 3 px.
+Vnitřní okraj v odkazech v navigaci je 10 px.
+
+Nadpisy druhé úrovně mají velikost 24 bodů, čára má stejné vlastnosti jako pod navigací.
+
+Buňky tabulky jsou zarovnány doleva a mají šířku 100 px. Obrázek má šířku 300 px.
+

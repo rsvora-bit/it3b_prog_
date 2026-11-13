@@ -1,80 +1,163 @@
-                                                                /* Nastavení celé stránky */
+
+/* ==========================================
+   NASTAVENÍ CELÉ STRÁNKY
+   ========================================== */
+
 body {
-    background-color: #ffffff; /* Světle šedé pozadí */
-    font-family: Arial, Helvetica, sans-serif; /* Typ písma */
-    line-height: 1.6; /* Výška řádků */
-    max-width: 1000px; /* Maximální šířka stránky */
-    margin: 0 auto; /* Vodorovné vycentrování stránky */
-    padding: 20px; /* Vnitřní odsazení od okrajů */
+    background-color: #ffffff; /* Barva pozadí celé stránky (#ffffff = bílá) */
+    font-family: Arial, Helvetica, sans-serif; /* Typ písma; pokud Arial není dostupný, použije Helvetica nebo jiné bezpatkové písmo */
+    line-height: 1.6; /* Výška řádku = 1,6násobek velikosti písma */
+    max-width: 1000px; /* Maximální šířka obsahu stránky je 1000 pixelů */
+    margin: 0 auto; /* 0 = žádný vnější okraj nahoře a dole; auto = vycentrování vodorovně */
+    padding: 20px; /* Vnitřní odsazení obsahu od okrajů o 20 pixelů */
 }
 
-                                                                /* Nastavení všech odstavců */
+
+/* ==========================================
+   NASTAVENÍ VŠECH ODSTAVCŮ <p>
+   ========================================== */
+
 p {
-    text-align: justify; /* Zarovnání textu do bloku */
+    text-align: justify; /* Zarovná text do bloku, tedy k levému i pravému okraji */
 }
 
-                                                                /* Nastavení nadpisů první úrovně */
+
+/* ==========================================
+   NADPIS PRVNÍ ÚROVNĚ <h1>
+   ========================================== */
+
 h1 {
-    text-align: center; /* Zarovnání nadpisu na střed */
-    color: white;
-    background-color: blue;
-    padding: 20px;
-    border-radius: 10px;
+    text-align: center; /* Zarovná text nadpisu na střed */
+    color: white; /* Barva textu nadpisu bude bílá */
+    background-color: blue; /* Barva pozadí nadpisu bude modrá */
+    padding: 20px; /* Vnitřní odsazení mezi textem a okrajem pozadí o 20 px */
+    border-radius: 10px; /* Zaoblí všechny čtyři rohy o poloměr 10 px */
 }
-h2 {
-    color: blue;
-    border-bottom: 2px solid rgb(147, 147, 199);
-    background-color: rgb(175, 196, 236);
-    padding: 5px;
-    border-radius: 15px;
-}
-h3 {
-    color: blue;
-}
-a {
-    color: blue;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
-}
-nav {
-    text-align: center;
-    background-color: white;
-    padding: 10px;
-    border-radius: 10%;
-}
-nav a {
-    margin: 0 10px
-}
-hr {
-    border: 1px solid black;
-    height: 0;
-    background-color: grey;
-    margin: 30px 20px
-} 
-img {
-    max-width: 100%;
-    height: auto;
-    border: 2px solid grey;
-    border-radius: 8px;
-}
-table{
-    border: 2px solid grey;
-    padding: 5px;
-    border-radius: 15px;
-    background-color: whitesmoke;
 
+
+/* ==========================================
+   NADPIS DRUHÉ ÚROVNĚ <h2>
+   ========================================== */
+
+h2 {
+    color: blue; /* Barva textu bude modrá */
+    border-bottom: 2px solid rgb(147, 147, 199); /* Dolní čára: tloušťka 2 px, plná čára, světle fialovomodrá barva */
+    background-color: rgb(175, 196, 236); /* Světle modrá barva pozadí nadpisu */
+    padding: 5px; /* Vnitřní odsazení textu od všech okrajů o 5 px */
+    border-radius: 15px; /* Zaoblení všech rohů o poloměr 15 px */
 }
+
+
+/* ==========================================
+   NADPIS TŘETÍ ÚROVNĚ <h3>
+   ========================================== */
+
+h3 {
+    color: blue; /* Nastaví modrou barvu textu nadpisu */
+}
+
+
+/* ==========================================
+   ODKAZY <a>
+   ========================================== */
+
+a {
+    color: blue; /* Nastaví modrou barvu textu odkazu */
+    text-decoration: none; /* Odstraní podtržení odkazu */
+}
+
+
+/* ==========================================
+   ODKAZ PŘI NAJETÍ MYŠÍ
+   ========================================== */
+
+a:hover {
+    text-decoration: underline; /* Když na odkaz najedeš myší, zobrazí se podtržení */
+}
+
+
+/* ==========================================
+   NAVIGAČNÍ MENU <nav>
+   ========================================== */
+
+nav {
+    text-align: center; /* Zarovná obsah navigace na střed */
+    background-color: white; /* Nastaví bílé pozadí navigačního menu */
+    padding: 10px; /* Vnitřní odsazení navigace o 10 px ze všech stran */
+    border-radius: 10%; /* Zaoblení rohů navigace o 10 % z rozměrů prvku */
+}
+
+
+/* ==========================================
+   ODKAZY UVNITŘ NAVIGACE
+   ========================================== */
+
+nav a {
+    margin: 0 10px; /* Vnější odsazení: 0 px nahoře/dole a 10 px vlevo/vpravo */
+}
+
+
+/* ==========================================
+   VODOROVNÁ ODDĚLOVACÍ ČÁRA <hr>
+   ========================================== */
+
+hr {
+    border: 1px solid black; /* Nastaví černý rámeček o tloušťce 1 px */
+    height: 0; /* Nastaví výšku samotného prvku na 0 */
+    background-color: grey; /* Nastaví šedé pozadí, které při výšce 0 nemusí být vidět */
+    margin: 30px 20px; /* Vnější odsazení: 30 px nahoře/dole a 20 px vlevo/vpravo */
+}
+
+
+/* ==========================================
+   OBRÁZKY <img>
+   ========================================== */
+
+img {
+    max-width: 100%; /* Obrázek nebude širší než 100 % šířky svého rodičovského prvku */
+    height: auto; /* Výška se automaticky přizpůsobuje a zachovává poměr stran */
+    border: 2px solid grey; /* Šedý rámeček kolem obrázku o tloušťce 2 px */
+    border-radius: 8px; /* Zaoblení rohů obrázku o poloměr 8 px */
+}
+
+
+/* ==========================================
+   TABULKA <table>
+   ========================================== */
+
+table {
+    border: 2px solid grey; /* Šedý rámeček kolem celé tabulky o tloušťce 2 px */
+    padding: 5px; /* Vnitřní odsazení obsahu tabulky od vnějšího rámečku o 5 px */
+    border-radius: 15px; /* Zaoblení vnějších rohů tabulky o poloměr 15 px */
+    background-color: whitesmoke; /* Nastaví velmi světle šedou barvu pozadí tabulky */
+}
+
+
+/* ==========================================
+   ZÁHLAVÍ TABULKY <th>
+   ========================================== */
+
 th {
-    background-color: blue;
-    color: white;
+    background-color: blue; /* Modré pozadí buněk záhlaví */
+    color: white; /* Bílá barva textu v záhlaví */
 }
+
+
+/* ==========================================
+   BUŇKY TABULKY <td> A <th>
+   ========================================== */
+
 td, th {
-    padding: 10px;
-    border: 1px solid grey;
-    text-align: center;
+    padding: 10px; /* Vnitřní odsazení textu od okrajů buněk o 10 px */
+    border: 1px solid grey; /* Šedý rámeček každé buňky o tloušťce 1 px */
+    text-align: center; /* Zarovná text uvnitř buněk vodorovně na střed */
 }
+
+
+/* ==========================================
+   LICHÉ ŘÁDKY TABULKY
+   ========================================== */
+
 tr:nth-child(odd) {
-    background-color: #3a76aa;
+    background-color: #3a76aa; /* Nastaví modré pozadí lichých řádků (1., 3., 5. atd.) */
 }
