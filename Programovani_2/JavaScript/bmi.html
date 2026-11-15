@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI kalkulačka</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>BMI kalkulačka</h2>
+
+    <form onsubmit="vypocitejBMI(); return false;">
+        <label for="vaha">Váha (kg):</label>
+        <input type="number" id="vaha" step="any" min="0.01" required>
+
+        <br><br>
+
+        <label for="vyska">Výška (m):</label>
+        <input type="number" id="vyska" step="any" min="0.01" required>
+
+        <br><br>
+
+        <button type="submit">Vypočítat BMI</button>
+    </form>
+
+    <p id="vysledek"></p>
+
+    <script>
+        function vypocitejBMI() {
+            let vaha = Number(document.getElementById("vaha").value);
+            let vyska = Number(document.getElementById("vyska").value);
+
+            let bmi = vaha / (vyska * vyska);
+            let hodnoceni;
+
+            if (bmi < 18.5) {
+                hodnoceni = "Podváha";
+            } else if (bmi < 25) {
+                hodnoceni = "Normální váha";
+            } else if (bmi < 30) {
+                hodnoceni = "Nadváha";
+            } else {
+                hodnoceni = "Obezita";
+            }
+
+            document.getElementById("vysledek").innerHTML =
+                "Vaše BMI je: " + bmi.toFixed(2) + "<br>Hodnocení: " + hodnoceni;
+        }
+    </script>
+
+</body>
+</html>

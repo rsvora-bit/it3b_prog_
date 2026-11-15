@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>JavaScript</h2>
+    <p> - JavaScript is a programming language that is used to create dynamic and interactive web pages. </p>
+    <p> - It allows developers to add functionality to websites, such as form validation, animations, and interactive elements.</p>
+
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Dynamic Content</td>
+            <td>JavaScript can change the content of a web page without reloading it.</td>
+        </tr>
+        <tr>
+            <td>Event Handling</td>
+            <td>JavaScript can respond to user actions, such as clicks and key presses.</td>
+        </tr>
+        <tr>
+            <td>Form Validation</td>
+            <td>JavaScript can validate user input in forms before submission.</td>
+        </tr>
+        <tr>
+            <td>Animations</td>
+            <td>JavaScript can create animations and visual effects on web pages.</td>
+        </tr>
+    </table>
+
+    <!-- ÚKOL 1: Pozdrav se jménem -->
+    <script>
+        let jmeno = prompt("Zadej své jméno:");
+        document.write("Hello " + jmeno + "!");
+    </script>
+
+    <!-- ÚKOL 2: Hádání tajného hesla -->
+    <script>
+        let heslo = "1234";
+        let odkryte = "*".repeat(heslo.length);
+        let pokus;
+
+        while (odkryte !== heslo) {
+            pokus = prompt("Uhodni tajné heslo:\n" + odkryte);
+
+            if (pokus === null) {
+                break;
+            }
+
+            for (let i = 0; i < heslo.length; i++) {
+                if (pokus[i] === heslo[i]) {
+                    odkryte = odkryte.substring(0, i)
+                            + heslo[i]
+                            + odkryte.substring(i + 1);
+                }
+            }
+        }
+
+        if (odkryte === heslo) {
+            alert("Přihlášení povoleno");
+        }
+    </script>
+
+    <!-- ÚKOL 3: Výpis čísel od 1 do 10 -->
+    <script>
+        document.write("<h3>Seznam čísel od 1 do 10:</h3>");
+        document.write("<ul>");
+
+        for (let i = 1; i <= 10; i++) {
+            document.write("<li>" + i + "</li>");
+        }
+
+        document.write("</ul>");
+    </script>
+
+    <p> Vytvořtě formulář s jedním vstupním políčkem a jedním tlačítkem. Do políčka uživatel zadá číslo. Po kliknutí na tlačítko se aktivuje funkce, která zjistí, zda je číslo kladné, záporné nebo nula. Výsledek oznámí pomocí funkce alert. </p>
+
+    <form name="f1">
+        <p>
+        Zadej číslo: <input type="text" name="cislo">
+        <input type="button" value="Zkontrolovat" onclick="zkontroluj()">
+        </p>
+    </form>
+    <script> 
+        function Zjisti() {
+            let cislo = document.f1.cislo.value;
+            if (cislo > 0) {
+                alert("Číslo je kladné.");
+            } else if (cislo < 0) {
+                alert("Číslo je záporné.");
+            } else {
+                alert("Číslo je nula.");
+            }
+        }
+    </script>
+
+    <script>
+        
+    </script>
+</body>
+</html>

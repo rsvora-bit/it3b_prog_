@@ -1,0 +1,27 @@
+h2 {
+    text-align: center; /* Zarovná text nadpisu na střed */
+    color: white; /* Barva textu nadpisu bude bílá */
+    background-color: blue; /* Barva pozadí nadpisu bude modrá */
+    padding: 20px; /* Vnitřní odsazení mezi textem a okrajem pozadí o 20 px */
+    border-radius: 10px; /* Zaoblí všechny čtyři rohy o poloměr 10 px */
+}
+
+body {
+    background-color: #ffffff; /* Barva pozadí celé stránky (#ffffff = bílá) */
+    font-family: Arial, Helvetica, sans-serif; /* Typ písma; pokud Arial není dostupný, použije Helvetica nebo jiné bezpatkové písmo */
+    line-height: 1.6; /* Výška řádku = 1,6násobek velikosti písma */
+    max-width: 1000px; /* Maximální šířka obsahu stránky je 1000 pixelů */
+    margin: 0 auto; /* 0 = žádný vnější okraj nahoře a dole; auto = vycentrování vodorovně */
+    padding: 20px; /* Vnitřní odsazení obsahu od okrajů o 20 pixelů */
+}
+
+p {
+    text-align: justify; /* Zarovná text do bloku, tedy k levému i pravému okraji */
+}
+
+table {
+    border: 2px solid grey; /* Šedý rámeček kolem celé tabulky o tloušťce 2 px */
+    padding: 5px; /* Vnitřní odsazení obsahu tabulky od vnějšího rámečku o 5 px */
+    border-radius: 15px; /* Zaoblení vnějších rohů tabulky o poloměr 15 px */
+    background-color: whitesmoke; /* Nastaví velmi světle šedou barvu pozadí tabulky */
+}
