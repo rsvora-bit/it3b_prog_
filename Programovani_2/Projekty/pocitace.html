@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHistory – Historie počítačů</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="hlavicka">
+            <a class="logo" href="index.html"><span>TH</span> TechHistory</a>
+            <p>Historie technologií na jednom místě</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Úvod</a>
+<a href="pocitace.html" class="aktivni">Počítače</a>
+<a href="mobily.html">Mobily</a>
+<a href="hry.html">Videohry</a>
+<a href="budoucnost.html">Budoucnost</a>
+    </nav>
+
+    <main>
+        <section class="hero"><div class="stitky">HISTORIE POČÍTAČŮ</div><h1>Od místností plných elektronek k notebookům</h1><p>Dnešní počítače zvládají miliardy operací a vejdou se do batohu. Před osmdesáti lety přitom podobné stroje vážily tuny a musely je obsluhovat celé týmy.</p></section>
+  <div class="fakta"><div class="fakt"><strong>18 000</strong><span>přibližný počet elektronek ENIACu</span></div><div class="fakt"><strong>30 tun</strong><span>přibližná hmotnost ENIACu</span></div><div class="fakt"><strong>4,77 MHz</strong><span>frekvence procesoru IBM PC</span></div><div class="fakt"><strong>1981</strong><span>uvedení IBM PC</span></div></div>
+  <section>
+<h2>ENIAC: počítač velikosti místnosti</h2>
+<div class="dva"><figure><img src="https://commons.wikimedia.org/wiki/Special:FilePath/ENIAC-changing_a_tube.jpg?width=960" alt="Historická fotografie ENIACu" onerror="this.onerror=null;this.src='obrazky/pocitac.svg';"><figcaption>ENIAC / Wikimedia Commons</figcaption></figure><div><h3>Rok 1946</h3><p>Americký počítač <strong>ENIAC</strong> byl veřejně představen v roce 1946. Byl konstruován pro náročné matematické výpočty, například při sestavování balistických tabulek. Programování neprobíhalo psaním kódu jako dnes: obsluha nastavovala přepínače a propojovala panely kabely.</p><p>ENIAC obsahoval kolem <strong>18 tisíc elektronek</strong> a vážil přibližně <strong>30 tun</strong>. Vyžadoval rozsáhlé prostory a velký přívod elektrické energie. Přesto šlo o ohromný pokrok proti pomalejším elektromechanickým strojům.</p><p><strong>Zajímavost:</strong> Důležitou část programování ENIACu vykonával tým šesti žen, jejichž práce byla dlouho přehlížena.</p></div></div>
+</section>
+  <section>
+<h2>Od elektronek k mikroprocesoru</h2>
+<div class="textove-karty"><div class="panel"><h3>Elektronky</h3><p>První velké elektronické počítače používaly elektronky. Zabíraly mnoho místa, zahřívaly se a jejich výměna byla náročná.</p></div><div class="panel"><h3>Tranzistory</h3><p>Tranzistory pomohly zmenšit elektronické obvody a zvýšit spolehlivost zařízení. Později se mnoho tranzistorů začalo spojovat do integrovaných obvodů.</p></div><div class="panel"><h3>Mikroprocesory</h3><p>Procesor na jediném čipu umožnil rozvoj menších a dostupnějších počítačů. Dnešní CPU obsahují miliardy tranzistorů.</p></div></div>
+</section>
+  <section>
+<h2>IBM PC a začátek počítačů v kancelářích</h2>
+<div class="dva"><figure><img src="https://commons.wikimedia.org/wiki/Special:FilePath/IBM%20PC%205150.jpg?width=960" alt="Původní osobní počítač IBM PC" onerror="this.onerror=null;this.src='obrazky/pocitac.svg';"><figcaption>IBM PC 5150 / Wikimedia Commons</figcaption></figure><div><h3>1981 – IBM Personal Computer</h3><p>Společnost IBM představila model <strong>5150</strong>, který se stal jedním z nejvlivnějších osobních počítačů. Používal procesor <strong>Intel 8088</strong> o frekvenci <strong>4,77 MHz</strong>. Jeho úspěch pomohl vytvořit velký trh s kompatibilními počítači, operačními systémy a periferiemi.</p><p>Starší počítače se často prodávaly jen jako samostatné platformy. U IBM PC se postupně prosadila otevřenější kompatibilita s dalším hardwarem a softwarem.</p></div></div>
+</section>
+  <section>
+<h2>Co je uvnitř dnešního počítače?</h2>
+<div class="tabulka"><table><tr><th>Součástka</th><th>K čemu slouží</th><th>Příklad</th></tr><tr><td>CPU</td><td>Provádí instrukce a výpočty</td><td>Intel Core / AMD Ryzen</td></tr><tr><td>RAM</td><td>Dočasně uchovává pracovní data</td><td>DDR4, DDR5</td></tr><tr><td>GPU</td><td>Zpracovává grafiku a paralelní výpočty</td><td>GeForce / Radeon</td></tr><tr><td>SSD</td><td>Rychlé dlouhodobé ukládání souborů</td><td>NVMe SSD</td></tr><tr><td>Základní deska</td><td>Propojuje komponenty</td><td>ATX, micro-ATX</td></tr></table></div>
+</section>
+  <section>
+<h2>Kalkulačka stáří technologie</h2>
+<p>Zadej rok uvedení technologie a zjisti, kolik let od něj uplynulo.</p><div class="formular"><label for="rokVynalezu">Rok uvedení</label><input type="number" min="1800" max="2026" id="rokVynalezu" placeholder="Například 1981"><button onclick="spocitejStari()">Vypočítat</button></div><p class="vysledek" id="stariVysledek">Tady se zobrazí výsledek.</p>
+</section>
+  
+    </main>
+
+    <footer>
+        <div class="paticka">
+            <p><strong>TechHistory</strong> · Projekt do Programování 2 · 2026</p>
+            <p>Zdroje: <a href="https://www.computerhistory.org/timeline/" target="_blank">Computer History Museum</a>, <a href="https://home.cern/science/computing/the-birth-of-the-web" target="_blank">CERN</a>, <a href="https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/" target="_blank">Apple</a>, <a href="https://commons.wikimedia.org/" target="_blank">Wikimedia Commons</a>.</p>
+            <p>Historické fotografie se načítají z internetu. V případě nedostupnosti se zobrazí místní ilustrace.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

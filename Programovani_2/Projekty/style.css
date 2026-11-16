@@ -1,0 +1,326 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #edf2f8;
+    color: #26364b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+header {
+    background-color: #152c4b;
+    color: white;
+    padding: 18px 22px;
+}
+
+.hlavicka {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.hlavicka p {
+    color: #b6cbe6;
+    margin: 0;
+    font-size: 14px;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    background-color: #49a8f5;
+    color: #11263f;
+    padding: 7px 10px;
+    border-radius: 8px;
+    margin-right: 9px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    background-color: white;
+    padding: 15px;
+    border-bottom: 1px solid #d4deea;
+}
+
+nav a {
+    color: #344b67;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 9px 19px;
+    border-radius: 8px;
+}
+
+nav a:hover, nav a.aktivni {
+    background-color: #1d5b9a;
+    color: white;
+}
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 26px 20px 50px;
+}
+
+section {
+    background-color: white;
+    padding: 32px;
+    margin-bottom: 24px;
+    border: 1px solid #dce5ee;
+    border-radius: 15px;
+    box-shadow: 0 3px 12px rgba(28, 54, 88, 0.06);
+}
+
+section.hero {
+    background-color: #1a3f6e;
+    color: white;
+    padding: 54px 40px;
+}
+
+.hero h1 {
+    color: white;
+    font-size: 42px;
+    line-height: 1.2;
+    max-width: 780px;
+    margin: 18px 0;
+}
+
+.hero p {
+    max-width: 720px;
+    color: #dbeaf9;
+    font-size: 18px;
+}
+
+.stitky {
+    color: #8bd5ff;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+h2 {
+    color: #17477d;
+    font-size: 27px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #d8e7f5;
+    margin-top: 0;
+}
+
+h3 {
+    color: #205d9c;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+p {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+a {
+    color: #1761a3;
+}
+
+a:hover {
+    color: #3498db;
+}
+
+.tlacitko, button, .odkaz {
+    display: inline-block;
+    background-color: #2986d1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 19px;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 4px 6px 4px 0;
+}
+
+.tlacitko:hover, button:hover, .odkaz:hover {
+    background-color: #1161a5;
+    color: white;
+}
+
+.vedlejsi {
+    background-color: #385b80;
+}
+
+.fakta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.fakt {
+    background-color: white;
+    border: 1px solid #dce5ee;
+    border-radius: 12px;
+    padding: 20px 16px;
+    flex: 1 1 180px;
+    text-align: center;
+}
+
+.fakt strong {
+    display: block;
+    color: #15649d;
+    font-size: 25px;
+}
+
+.fakt span {
+    display: block;
+    font-size: 13px;
+    color: #526783;
+}
+
+.karty, .textove-karty {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+.karta, .panel {
+    flex: 1 1 210px;
+    padding: 21px;
+    background-color: #f6f9fd;
+    border: 1px solid #dce7f2;
+    border-radius: 12px;
+}
+
+.karta h3, .panel h3 {
+    margin-top: 7px;
+}
+
+.symbol {
+    background-color: #dcefff;
+    color: #145b9b;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 26px;
+    border-radius: 10px;
+}
+
+.dva {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.dva figure {
+    width: 39%;
+    min-width: 235px;
+    margin: 0;
+}
+
+.dva > div {
+    flex: 1 1 320px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid #dce7f2;
+    background-color: #eef5fb;
+}
+
+figure img {
+    width: 100%;
+    max-height: 360px;
+    object-fit: contain;
+}
+
+figcaption {
+    color: #64758c;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.tabulka {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th, td {
+    border-bottom: 1px solid #dde7f2;
+    padding: 13px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #e7f2fc;
+    color: #204c78;
+}
+
+.roky {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.vysledek {
+    padding: 20px;
+    background-color: #e6f1fc;
+    border: 1px solid #bbd8ef;
+    border-radius: 9px;
+    color: #184c7e;
+    font-weight: bold;
+}
+
+.formular {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+input {
+    padding: 11px;
+    border: 1px solid #a9bed2;
+    border-radius: 7px;
+    font-size: 16px;
+}
+
+footer {
+    background-color: #152c4b;
+    color: white;
+    padding: 28px 20px;
+}
+
+.paticka {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+footer a {
+    color: #9ad6ff;
+}
+
+footer p {
+    font-size: 13px;
+    color: #ced9e7;
+}

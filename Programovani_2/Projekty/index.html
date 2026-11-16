@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechHistory – Úvod</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="hlavicka">
+            <a class="logo" href="index.html"><span>TH</span> TechHistory</a>
+            <p>Historie technologií na jednom místě</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html" class="aktivni">Úvod</a>
+<a href="pocitace.html">Počítače</a>
+<a href="mobily.html">Mobily</a>
+<a href="hry.html">Videohry</a>
+<a href="budoucnost.html">Budoucnost</a>
+    </nav>
+
+    <main>
+        <section class="hero"><div class="stitky">ONLINE MUZEUM TECHNIKY · OD ROKU 1946 DO SOUČASNOSTI</div><h1>Technologie, které změnily svět.</h1><p>Od počítačů velkých jako místnost až po chytrý telefon v kapse. Prozkoumej nejdůležitější vynálezy, jejich příběhy a překvapivé souvislosti.</p><a class="tlacitko" href="pocitace.html">Začít prohlídku</a> <a class="tlacitko vedlejsi" href="#osa">Zobrazit časovou osu</a></section>
+  <div class="fakta"><div class="fakt"><strong>1946</strong><span>ENIAC veřejně představen</span></div><div class="fakt"><strong>1989</strong><span>Návrh World Wide Webu</span></div><div class="fakt"><strong>2007</strong><span>První iPhone</span></div><div class="fakt"><strong>2022</strong><span>Spuštění ChatGPT</span></div></div>
+  <section>
+<h2>Vyber si oblast technologií</h2>
+<div class="karty"><article class="karta"><div class="symbol">⌘</div><h3>Počítače</h3><p>Seznam se s ENIACem, IBM PC a cestou od elektronek k moderním čipům.</p><a class="odkaz" href="pocitace.html">Prozkoumat téma</a></article><article class="karta"><div class="symbol">▣</div><h3>Mobilní telefony</h3><p>První mobilní hovor, SMS, Nokia i příchod prvního iPhonu.</p><a class="odkaz" href="mobily.html">Prozkoumat téma</a></article><article class="karta"><div class="symbol">✦</div><h3>Videohry</h3><p>Od Pongu a prvních konzolí přes PlayStation až po dnešní 3D světy.</p><a class="odkaz" href="hry.html">Prozkoumat téma</a></article><article class="karta"><div class="symbol">◎</div><h3>Budoucnost</h3><p>Umělá inteligence, roboti, virtuální realita i jejich dopad na život.</p><a class="odkaz" href="budoucnost.html">Prozkoumat téma</a></article></div>
+</section>
+  <section>
+<h2>Příběh internetu a webu</h2>
+<div class="dva"><figure><img src="https://commons.wikimedia.org/wiki/Special:FilePath/NeXTcube%20first%20web%20server.JPG?width=960" alt="První webový server NeXT" onerror="this.onerror=null;this.src='obrazky/pocitac.svg';"><figcaption>Historická fotografie / Wikimedia Commons</figcaption></figure><div><h3>Internet není totéž co web</h3><p>Internet je celosvětová síť propojených počítačových sítí. World Wide Web je služba, která přes internet propojuje dokumenty a stránky pomocí odkazů. Když si otevřeš web, používáš internet – ale internet umožňuje také e-mail, hovory a mnoho dalších služeb.</p><p>Vědec <strong>Tim Berners-Lee</strong> předložil návrh webu v CERNu v roce <strong>1989</strong>. Do konce roku 1990 už na počítači NeXT fungoval první server i prohlížeč. Web se postupně stal dostupným celému světu.</p><p><strong>Zajímavost:</strong> První server měl varovný nápis, aby jej nikdo omylem nevypnul.</p></div></div>
+</section>
+  <section id="osa">
+<h2>Interaktivní časová osa</h2>
+<p>Vyber si rok a prohlédni si událost. Tlačítka fungují díky jednoduchému JavaScriptu.</p><div class="roky"><button onclick="zobrazRok(1946)">1946</button><button onclick="zobrazRok(1972)">1972</button><button onclick="zobrazRok(1981)">1981</button><button onclick="zobrazRok(1989)">1989</button><button onclick="zobrazRok(2007)">2007</button><button onclick="zobrazRok(2022)">2022</button></div><p class="vysledek" id="udalost">Klikni na libovolný rok.</p>
+</section>
+  <section>
+<h2>Pět momentů, které stojí za zapamatování</h2>
+<div class="tabulka"><table><tr><th>Rok</th><th>Událost</th><th>Proč byla důležitá</th></tr><tr><td>1946</td><td>ENIAC</td><td>Elektronické výpočty ve velkém měřítku</td></tr><tr><td>1971</td><td>Intel 4004</td><td>Jeden z prvních komerčních mikroprocesorů</td></tr><tr><td>1981</td><td>IBM PC</td><td>Rozšíření osobních počítačů ve firmách</td></tr><tr><td>2007</td><td>iPhone</td><td>Ovládání telefonu velkým dotykovým displejem</td></tr><tr><td>2022</td><td>ChatGPT</td><td>Široká dostupnost konverzační AI</td></tr></table></div>
+</section>
+  
+    </main>
+
+    <footer>
+        <div class="paticka">
+            <p><strong>TechHistory</strong> · Projekt do Programování 2 · 2026</p>
+            <p>Zdroje: <a href="https://www.computerhistory.org/timeline/" target="_blank">Computer History Museum</a>, <a href="https://home.cern/science/computing/the-birth-of-the-web" target="_blank">CERN</a>, <a href="https://www.apple.com/newsroom/2007/01/09Apple-Reinvents-the-Phone-with-iPhone/" target="_blank">Apple</a>, <a href="https://commons.wikimedia.org/" target="_blank">Wikimedia Commons</a>.</p>
+            <p>Historické fotografie se načítají z internetu. V případě nedostupnosti se zobrazí místní ilustrace.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
